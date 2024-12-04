@@ -1,0 +1,16 @@
+BasedOnStyle: Google
+AlignAfterOpenBracket: AlwaysBreak
+AllowAllArgumentsOnNextLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLambdasOnASingleLine: Empty
+AlwaysBreakAfterReturnType: AllDefinitions
+BinPackArguments: false
+BinPackParameters: false
+BraceWrapping:
+    AfterFunction: true
+    AfterControlStatement: false
+BreakBeforeBraces: Custom
+ColumnLimit: 140
+ContinuationIndentWidth: 4
+ExperimentalAutoDetectBinPacking: false
+IndentWidth: 4

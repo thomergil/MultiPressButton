@@ -1,0 +1,8 @@
+MultiPressButton	KEYWORD1
+process	KEYWORD2
+setActions	KEYWORD2
+singlePress	KEYWORD2
+doublePress	KEYWORD2
+triplePress	KEYWORD2
+longPress	KEYWORD2
+getPin	KEYWORD2
