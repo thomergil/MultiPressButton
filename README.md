@@ -80,7 +80,7 @@ Just remember to call `button.process()` regularly to handle any queued events. 
 
 ## Interface Styles
 
-Choose one interface style and stick with it. Mixing the two interfaces is not supported.
+Choose one interface style and stick with it. Mixing the two interfaces for a single button is not supported.
 
 ### 1. Lambda/Callback Style
 Best when you want to respond immediately to button presses:
@@ -159,7 +159,7 @@ GND ────┛
 - Arduino framework supporting C++11 or later
 
 ## Contributing
-Pull requests welcome! Please follow the existing code style and add unit tests for any new features.
+Pull requests welcome! Please follow the existing code style.
 
 ## See also
 
