@@ -56,7 +56,14 @@ void loop() {
 }
 ```
 
+## Installation
+
+Either clone this repository into `library/MultiPressButton` or download it as a zip file and unzip it into `library/MultiPressButton`. 
+
+Then `#include <MultiPressButton.h>` in your code.
+
 ## Features
+
 - Single, double, triple press detection
 - Long press support
 - Debouncing built in
@@ -115,9 +122,6 @@ void loop() {
     }
 }
 ```
-
-## Installation
-Clone or copy this repository into `library/MultiPressButton`
 
 ## Configuration
 The button behavior can be customized during construction:
