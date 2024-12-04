@@ -123,26 +123,6 @@ void loop() {
 }
 ```
 
-## Configuration
-The button behavior can be customized during construction:
-
-```cpp
-MultiPressButton button(
-    4,                           // Pin number
-    INPUT_PULLUP,                // Pin mode (default)
-    50,                          // Debounce time in ms (default)
-    1000,                        // Long press duration in ms (default)
-    1000                         // Multi-press window in ms (default)
-);
-
-// All parameters after pin are optional:
-MultiPressButton simple(4);      // Equivalent to above with all defaults
-
-// Common customizations:
-MultiPressButton quick(4, INPUT_PULLUP, 20);     // Faster 20ms debounce
-MultiPressButton slow(4, INPUT_PULLUP, 50, 2000); // 2 second long press
-```
-
 ## Timing Subtlety
 
 The core principle is: the library must sometimes wait to determine the final press count. The timing behavior depends on which press counts you want to detect:
@@ -165,6 +145,47 @@ The same principle applies:
 - Only `longPress()` can be detected immediately when its duration is reached
 
 In both interfaces, when you want to differentiate between multiple press counts (like single vs triple), waiting for the window to expire is unavoidable.
+
+## Timing Parameters
+
+The library's behavior is controlled by several timing parameters that affect debouncing, long press detection, and multi-press detection:
+
+1. **Debounce Time** (default: 50ms)
+   - Filters out mechanical switch bounce
+   - Higher values provide more stable readings but increase input lag
+   - Can be reduced (e.g., to 20ms) for faster response if your button is electrically clean
+   - Too low values may cause single presses to register as multiple
+
+2. **Long Press Duration** (default: 1000ms)
+   - How long the button must be held to trigger a long press
+   - Triggers when the duration is reached, no waiting (in callback style)
+   - Independent of other timing parameters
+   - Commonly set between 500ms-2000ms depending on application
+
+3. **Multi-Press Window** (default: 1000ms)
+   - Maximum time allowed between presses for multi-press detection
+   - Starts counting after each button release, essentially extending the window for more presses to follow
+   - Must complete all presses within this window for them to count as multi-press
+   - Longer windows are easier for users but increase response lag when detecting multiple press counts
+
+These parameters can then be set in the constructor as follows.
+
+```cpp
+MultiPressButton button(
+    4,                           // Pin number
+    INPUT_PULLUP,                // Pin mode (default)
+    50,                          // Debounce time in ms (default)
+    1000,                        // Long press duration in ms (default)
+    1000                         // Multi-press window in ms (default)
+);
+
+// All parameters after pin are optional:
+MultiPressButton simple(4);      // Equivalent to above with all defaults
+
+// Common customizations:
+MultiPressButton quick(4, INPUT_PULLUP, 20);     // Faster 20ms debounce
+MultiPressButton slow(4, INPUT_PULLUP, 50, 2000); // 2 second long press
+```
 
 ## Hardware Setup
 
