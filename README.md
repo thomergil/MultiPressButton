@@ -139,7 +139,31 @@ MultiPressButton quick(4, INPUT_PULLUP, 20);     // Faster 20ms debounce
 MultiPressButton slow(4, INPUT_PULLUP, 50, 2000); // 2 second long press
 ```
 
+## Timing Subtlety
+
+The core principle is: the library must sometimes wait to determine the final press count. The timing behavior depends on which press counts you want to detect:
+
+### Callback Interface with`setActions()`
+1. Immediate execution happens when the library can be certain no other relevant press counts are possible:
+   - When only `singleAction` is defined (no need to wait for double/triple)
+   - When only `doubleAction` is defined (no need to wait for triple)
+   - When only `singleAction` and `doubleAction` are defined (no triple to wait for)
+   - Long press always executes immediately when its duration is reached
+
+2. Delayed execution is necessary when multiple relevant press counts are possible:
+   - If `tripleAction` is defined alongside `single` or `double`, we must wait to see if more presses come
+   - The library has no choice but to wait for the multi-press window to expire (default 1000ms) to determine the final count
+
+### Polling Interface
+The same principle applies:
+- If detecting multiple press counts (any combination of single/double/triple), events won't be detectable until the multi-press window closes
+- The library must wait to know the final number of presses before it can tell you which event occurred
+- Only `longPress()` can be detected immediately when its duration is reached
+
+In both interfaces, when you want to differentiate between multiple press counts (like single vs triple), waiting for the window to expire is unavoidable.
+
 ## Hardware Setup
+
 Connect your button between the input pin and ground. The library uses the internal pull-up resistor by default (`INPUT_PULLUP` mode).
 
 ```
