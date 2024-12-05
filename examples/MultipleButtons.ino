@@ -27,8 +27,8 @@ setup()
 void
 loop()
 {
-    buttonA.process();
-    buttonB.process();
+    buttonA.update();
+    buttonB.update();
 
     // Poll button B
     if (buttonB.singlePress()) {

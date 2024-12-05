@@ -23,7 +23,7 @@ void setup() {
 }
 
 void loop() {
-    button.process();  // Must call this regularly
+    button.update();  // Must call this regularly
 }
 ```
 ## Sample: polling style
@@ -39,7 +39,7 @@ void setup() {
 }
 
 void loop() {
-    button.process();  // Must call this regularly
+    button.update();  // Must call this regularly
     
     if (button.singlePress()) {
         Serial.println("Single press!");
@@ -83,7 +83,7 @@ Button events are captured in an interrupt service routine (ISR) and stored in a
 - Uses `delay()`
 - Performs long calculations
 
-Just remember to call `button.process()` regularly to handle any queued events. It is OK to call `button.process()` multiple times in a loop.
+Just remember to call `button.update()` regularly to handle any queued events. It is OK to call `button.update()` multiple times in a loop.
 
 ## Interface Styles
 
@@ -106,7 +106,7 @@ Best when you want direct control over when to handle button events:
 
 ```cpp
 void loop() {
-    button.process();
+    button.update();
     
     if (button.singlePress()) {
         // Handle single press

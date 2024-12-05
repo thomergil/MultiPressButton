@@ -12,7 +12,7 @@ setup()
 void
 loop()
 {
-    button.process();
+    button.update();
     if (button.singlePress()) {
         Serial.println("Click!");
     }

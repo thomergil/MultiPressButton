@@ -52,7 +52,7 @@ const unsigned long DEFAULT_LONG_PRESS_DURATION =
  * Usage:
  * 1. Create an instance: MultiPressButton button(PIN);
  * 2. Call button.setup() in your setup()
- * 3. Call button.process() regularly in your loop()
+ * 3. Call button.update() regularly in your loop()
  * 4. Either:
  *    a) Set callbacks with setActions(), or
  *    b) Poll for events with single/double/triple/longPress()
@@ -129,7 +129,7 @@ class MultiPressButton {
    * Process button events
    * Must be called regularly from your main loop
    */
-  void process();
+  void update();
 
   /**
    * Set callback functions for button events

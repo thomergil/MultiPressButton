@@ -217,7 +217,7 @@ void MultiPressButton::setActions(std::function<void()> single,
 
 unsigned MultiPressButton::getPin() const { return pin; }
 
-void MultiPressButton::process() {
+void MultiPressButton::update() {
   while (readIndex != writeIndex) {
     ButtonEvent event = {eventBuffer[readIndex].timestamp,
                          eventBuffer[readIndex].buttonPosition};

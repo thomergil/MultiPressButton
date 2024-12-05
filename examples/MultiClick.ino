@@ -25,6 +25,6 @@ setup()
 void
 loop()
 {
-    button.process();
+    button.update();
 }
 
