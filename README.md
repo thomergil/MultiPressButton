@@ -1,6 +1,6 @@
 # MultiPressButton
 
-A multiplatform library for handling button input with support for **single**, **double**, **triple**, and **long presses**. It supports callback style and polling style (though you cannot use both styles simultaneously for one button). It is robust against delays, e.g., blocking network traffic in that **no button presses are lost during blocking operations**.
+A multiplatform library for handling button input with support for **single**, **double**, **triple**, and **long presses**. It supports callback style and polling style (though you cannot use both styles simultaneously for one button). It is robust against delays, e.g., blocking network traffic. That is, **no button presses are lost during blocking operations**.
 
 ## Sample: callback style
 
